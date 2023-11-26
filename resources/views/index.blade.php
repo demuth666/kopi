@@ -35,7 +35,7 @@
         </div>
 
         <div class="login">
-            <a href={{ route('login') }}>Login</a>
+            <a href={{ route('filament.admin.auth.login') }}>Login</a>
         </div>
 
         <div class="navbar-extra">
@@ -104,12 +104,10 @@
             </div>
             <div class="content">
                 <h3>Kenapa memilih kopi kami?</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur ducimus voluptatum dolor. Et,
-                    voluptatum
-                    accusantium!</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic deserunt iure amet facilis eos a quo
-                    cum
-                    voluptates molestias nihil.</p>
+                <p>Nikmati kopi berkualitas tinggi kami, hasil dari biji terbaik yang dipilih secara hati-hati. Dengan
+                    setiap tegukan, Anda merasakan kelezatan dari perkebunan ke cangkir.</p>
+                <p>Dukungan Anda tidak hanya menikmati kopi, tetapi juga mendukung petani lokal dan keberlanjutan.
+                    Keberagaman cita rasa kami adalah seni, menciptakan pengalaman yang istimewa.</p>
             </div>
         </div>
     </section>
@@ -121,38 +119,14 @@
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita, repellendus numquam quam tempora
             voluptatum.
         </p>
-
         <div class="row">
-            <div class="menu-card">
-                <img src="img/menu/1.jpg" alt="Espresso" class="menu-card-img">
-                <h3 class="menu-card-title">- Espresso -</h3>
-                <p class="menu-card-price">IDR 15K</p>
-            </div>
-            <div class="menu-card">
-                <img src="img/menu/1.jpg" alt="Espresso" class="menu-card-img">
-                <h3 class="menu-card-title">- Capuccino -</h3>
-                <p class="menu-card-price">IDR 25K</p>
-            </div>
-            <div class="menu-card">
-                <img src="img/menu/1.jpg" alt="Espresso" class="menu-card-img">
-                <h3 class="menu-card-title">- Latte -</h3>
-                <p class="menu-card-price">IDR 20K</p>
-            </div>
-            <div class="menu-card">
-                <img src="img/menu/1.jpg" alt="Espresso" class="menu-card-img">
-                <h3 class="menu-card-title">- Espresso -</h3>
-                <p class="menu-card-price">IDR 15K</p>
-            </div>
-            <div class="menu-card">
-                <img src="img/menu/1.jpg" alt="Espresso" class="menu-card-img">
-                <h3 class="menu-card-title">- Espresso -</h3>
-                <p class="menu-card-price">IDR 15K</p>
-            </div>
-            <div class="menu-card">
-                <img src="img/menu/1.jpg" alt="Espresso" class="menu-card-img">
-                <h3 class="menu-card-title">- Espresso -</h3>
-                <p class="menu-card-price">IDR 15K</p>
-            </div>
+            @foreach ($produk as $produk)
+                <div class="menu-card">
+                    <img src="{{ asset('storage/' . $produk->gambar) }}" alt="Espresso" class="menu-card-img">
+                    <h3 class="menu-card-title">{{ $produk->nama_produk }}</h3>
+                    <p class="menu-card-price">IDR {{ $produk->harga }}</p>
+                </div>
+            @endforeach
         </div>
     </section>
     <!-- Menu Section end -->
@@ -160,10 +134,23 @@
     <!-- Products Section start -->
     <section class="products" id="products">
         <h2><span>Produk Unggulan</span> Kami</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo unde eum, ab fuga possimus iste.</p>
 
         <div class="row">
-            <div class="product-card">
+            @foreach ($produks as $produks)
+                <div class="product-card">
+                    <div class="product-icons">
+                        <a href="#"><i data-feather="shopping-cart"></i></a>
+                    </div>
+                    <div class="product-image">
+                        <img src="{{ asset('storage/' . $produk->gambar) }}" alt="Product 1">
+                    </div>
+                    <div class="product-content">
+                        <h3>{{ $produks->nama_produk }}</h3>
+                        <div class="product-price">IDR {{ $produks->harga }} <span>IDR 55K</span></div>
+                    </div>
+                </div>
+            @endforeach
+            {{-- <div class="product-card">
                 <div class="product-icons">
                     <a href="#"><i data-feather="shopping-cart"></i></a>
                     <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
@@ -173,13 +160,6 @@
                 </div>
                 <div class="product-content">
                     <h3>Coffee Beans 1</h3>
-                    <div class="product-stars">
-                        <i data-feather="star" class="star-full"></i>
-                        <i data-feather="star" class="star-full"></i>
-                        <i data-feather="star" class="star-full"></i>
-                        <i data-feather="star" class="star-full"></i>
-                        <i data-feather="star"></i>
-                    </div>
                     <div class="product-price">IDR 30K <span>IDR 55K</span></div>
                 </div>
             </div>
@@ -193,36 +173,9 @@
                 </div>
                 <div class="product-content">
                     <h3>Coffee Beans 1</h3>
-                    <div class="product-stars">
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
-                    </div>
                     <div class="product-price">IDR 30K <span>IDR 55K</span></div>
                 </div>
-            </div>
-            <div class="product-card">
-                <div class="product-icons">
-                    <a href="#"><i data-feather="shopping-cart"></i></a>
-                    <a href="#" class="item-detail-button"><i data-feather="eye"></i></a>
-                </div>
-                <div class="product-image">
-                    <img src="img/products/1.jpg" alt="Product 1">
-                </div>
-                <div class="product-content">
-                    <h3>Coffee Beans 1</h3>
-                    <div class="product-stars">
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
-                        <i data-feather="star"></i>
-                    </div>
-                    <div class="product-price">IDR 30K <span>IDR 55K</span></div>
-                </div>
-            </div>
+            </div> --}}
         </div>
     </section>
     <!-- Products Section end -->
@@ -236,8 +189,7 @@
         <div class="row">
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126748.56347862248!2d107.57311709235512!3d-6.903444341687889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e6398252477f%3A0x146a1f93d3e815b2!2sBandung%2C%20Bandung%20City%2C%20West%20Java!5e0!3m2!1sen!2sid!4v1672408575523!5m2!1sen!2sid"
-                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                class="map"></iframe>
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
 
             <form action="">
                 <div class="input-group">
